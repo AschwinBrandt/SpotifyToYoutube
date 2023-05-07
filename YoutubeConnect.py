@@ -66,7 +66,7 @@ def yt_add_song_to_playlist(youtube, playlist_id, resource_id):
             "position": 0,
             "resourceId": {
               "kind": "youtube#video",
-              "videoId": "M7FIvfx5J10"
+              "videoId": resource_id
             }
           }
         }

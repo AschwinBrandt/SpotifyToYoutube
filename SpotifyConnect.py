@@ -26,7 +26,30 @@ def connect_to_spotify():
     return access_token
 
 
+# def get_user(access_token):
+    # # https://api.spotify.com/v1/me
+    # url = "https://api.spotify.com/v1/me"
+    # header = {"Authorization": "Bearer " + access_token}
+    #
+    # user_id = None
+    # response = requests.get(url, headers=header)
+    # if response.status_code == 200:
+    #     json_response = json.loads(response.content)
+    #     user_id = json_response["id"]
+    # else:
+    #     print("Request failed with error code {}".format(response.status_code))
 
+# def get_playlists(access_token, user_id):
+#     url = "https://api.spotify.com/v1/users/{}/playlists".format(user_id)
+#     header = {"Authorization": "Bearer " + access_token}
+#
+#     playlists = []
+#     while url:
+#         response = requests.get(url, headers=header)
+#         if response.status_code == 200:
+#             json_response = json.loads(response.content)
+#             url = json_response["next"]
+#             print(url)
 
 def get_songs(access_token, playlist_id):
     url = "https://api.spotify.com/v1/playlists/{}/tracks".format(playlist_id)
