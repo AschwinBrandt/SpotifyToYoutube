@@ -2,4 +2,5 @@ spotify_client_id_secret.json
 youtube_client_id_secret.json
 __pycache__/
 .DS_Store
-.idea
+*.idea
+*.p
