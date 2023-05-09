@@ -68,7 +68,7 @@ def get_songs(access_token, playlist_id):
                 artist = track["track"]["artists"][0]["name"]
                 songs.append({'artist': artist, 'track': track_name})
         else:
-            print("Something went wrong getting the songs_iteratie_1.json!")
+            print("Something went wrong getting the songs_iteratie_1.json!") #TODO
 
     return songs
 

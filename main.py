@@ -18,14 +18,19 @@ if __name__ == '__main__':
     # spotify_playlists = SpotifyConnect.get_playlists(access_token)
 
     # TODO: Select a playlist
+    # playlist = input('Enter Spotify playlist name you want to use or create: ')
     playlist = "2JFKf7T7Emw7XyH9GLr5PS"
     songs = SpotifyConnect.get_songs(access_token, playlist_id=playlist)
 
-    # Create Youtube playlist
-    playlist_id = YoutubeConnect.yt_create_playlist(youtube, "Techno")
+    # Get or create playlist
+    playlist_name = input('Enter YT playlist name you want to use or create: ')
+    playlist_id = YoutubeConnect.yt_get_playlist(youtube, playlist_name)
+
+    if len(playlist_id) < 1:
+        playlist_id = YoutubeConnect.yt_create_playlist(youtube, playlist_name)
 
     # Get YT URL's
-    for song in songs[:1]:
+    for song in songs[:10]:
         videoid = YoutubeConnect.yt_search(youtube, "{} - {}".format(song["track"], song["artist"]))
         YoutubeConnect.yt_add_song_to_playlist(youtube, playlist_id, videoid)
 

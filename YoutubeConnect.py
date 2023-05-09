@@ -43,6 +43,25 @@ def yt_search(youtube, query):
     return videoid
 
 
+def yt_get_playlist(youtube, playlist_name):
+
+    playlist_id = ""
+
+    # TODO: Add pagination in case people have more then 50 playlists
+    request = youtube.playlists().list(
+        part="snippet",
+        mine="true",
+        maxResults=50
+    )
+    response = request.execute()
+
+    for item in response["items"]:
+        if item["snippet"]["title"] == playlist_name:
+            playlist_id = item["id"]
+
+    return playlist_id
+
+
 def yt_create_playlist(youtube, playlist_name):
     request = youtube.playlists().insert(
         part="snippet",
