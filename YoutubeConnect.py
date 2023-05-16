@@ -25,7 +25,7 @@ class YoutubeConnect:
         flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(client_secrets_file, self.__scopes)
         credentials = flow.run_console()
 
-        __youtube = googleapiclient.discovery.build(api_service_name, api_version, credentials=credentials)
+        self.__youtube = googleapiclient.discovery.build(api_service_name, api_version, credentials=credentials)
 
     def yt_download(self, url):
         # return "{}".format(url)
