@@ -82,7 +82,6 @@ def yt_add_song_to_playlist(youtube, playlist_id, resource_id):
         body={
           "snippet": {
             "playlistId": playlist_id,
-            "position": 0,
             "resourceId": {
               "kind": "youtube#video",
               "videoId": resource_id

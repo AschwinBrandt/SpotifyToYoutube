@@ -56,15 +56,15 @@ if __name__ == '__main__':
             song_offset = int(previous_data["offset"])
         else:
             os.remove("pickle_data.p")
-            spotify_playlist, yt_playlist_id, songs = get_playlist_and_songs(access_token)
+            spotify_playlist, yt_playlist_id, spotify_songs = get_playlist_and_songs(access_token)
     else:
-        spotify_playlist, yt_playlist_id, songs = get_playlist_and_songs(access_token)
+        spotify_playlist, yt_playlist_id, spotify_songs = get_playlist_and_songs(access_token)
 
 
 
     # Get YT URL's
     counter = song_offset
-    for song in songs[song_offset:song_offset+100]:
+    for song in spotify_songs[song_offset:song_offset+100]:
         try:
             videoid = YoutubeConnect.yt_search(youtube, "{} - {}".format(song["track"], song["artist"]))
             YoutubeConnect.yt_add_song_to_playlist(youtube, yt_playlist_id, videoid) #TODO: Fetch errors when quota is reached
@@ -75,9 +75,11 @@ if __name__ == '__main__':
 
 
     # Pickle data if not all songs are iterated
-    if counter < len(songs) - 1:
-        persistant_data = {"spotify_playlist" : spotify_playlist, "youtube_playlist" : yt_playlist_id, "spotify_songs" : songs, "offset" : counter}
+    if counter < len(spotify_songs) - 1:
+        persistant_data = {"spotify_playlist" : spotify_playlist, "youtube_playlist" : yt_playlist_id, "spotify_songs" : spotify_songs, "offset" : counter}
         pickle.dump(persistant_data, open("pickle_data.p", "wb"))
+    else:
+        os.remove("pickle_data.p")
 
 
 
