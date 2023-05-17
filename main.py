@@ -12,7 +12,7 @@ def get_playlist_and_songs(youtubeConnect, spotifyConnect):
     # spotify_user_id = SpotifyConnect.get_user(access_token)
     # spotify_playlists = SpotifyConnect.get_playlists(access_token)
     # playlist = input('Enter Spotify playlist name you want to use or create: ')
-    sf_playlist_id = "2JFKf7T7Emw7XyH9GLr5PS"
+    sf_playlist_id = input('Enter the Spotify playlist ID of the playlist you want to convert: ') #"2JFKf7T7Emw7XyH9GLr5PS" or 1qvjFvI0qCVgtfF67i8OC6
     spotify_songs = spotifyConnect.get_songs(playlist_id=sf_playlist_id)
 
     # Get or create playlist
@@ -96,7 +96,8 @@ if __name__ == '__main__':
         persistant_data = {"spotify_playlist" : sf_playlist_id, "youtube_playlist" : yt_playlist_id, "spotify_songs" : spotify_songs, "offset" : counter}
         pickle.dump(persistant_data, open("pickle_data.p", "wb"))
     else:
-        os.remove("pickle_data.p")
+        if (os.path.exists("pickle_data.p")):
+            os.remove("pickle_data.p")
 
 
 

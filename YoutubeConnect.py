@@ -90,7 +90,7 @@ class YoutubeConnect:
             }
         )
         response = request.execute()
-        print(response)
+        print("https://www.youtube.com/watch?v={}".format(resource_id))
 
 
 
