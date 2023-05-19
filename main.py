@@ -84,8 +84,12 @@ if __name__ == '__main__':
     counter = song_offset
     for song in spotify_songs[song_offset:song_offset+100]:
         try:
-            videoid = youtubeConnect.yt_search("{} - {}".format(song["track"], song["artist"]))
-            youtubeConnect.yt_add_song_to_playlist(yt_playlist_id, videoid)
+            artist_name = song["artist"]
+            song_name = song["track"]
+
+            video_id = youtubeConnect.yt_search("{} - {}".format(song_name, artist_name))
+            youtubeConnect.yt_add_song_to_playlist(yt_playlist_id, video_id, artist_name, song_name)
+
             counter += 1
         except:
             print("Error, probably reached YT quota. Please run the script again tomorrow.")

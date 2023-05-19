@@ -75,10 +75,10 @@ class YoutubeConnect:
         playlist_id = response["id"]
         return playlist_id
 
-    def yt_add_song_to_playlist(self, playlist_id, resource_id):
+    def yt_add_song_to_playlist(self, playlist_id, resource_id, artist_name = None, song_name = None):
 
         request = self.__youtube.playlistItems().insert(
-            part="snippet",
+            part="snippet,contentDetails",
             body={
               "snippet": {
                 "playlistId": playlist_id,
@@ -86,6 +86,9 @@ class YoutubeConnect:
                   "kind": "youtube#video",
                   "videoId": resource_id
                 }
+              },
+              "contentDetails": {
+                  "note": "{} - {}".format(artist_name, song_name)
               }
             }
         )
