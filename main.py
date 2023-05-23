@@ -1,8 +1,11 @@
+import sys
 import os
 import pickle
 
 from SpotifyConnect import SpotifyConnect
 from YoutubeConnect import YoutubeConnect
+
+from googleapiclient.errors import HttpError
 
 
 def get_playlist_and_songs(youtubeConnect, spotifyConnect):
@@ -95,8 +98,9 @@ if __name__ == '__main__':
             youtubeConnect.yt_add_song_to_playlist(yt_playlist_id, video_id, artist_name, song_name)
 
             counter += 1
-        except:
+        except HttpError as e:
             print("Error, probably reached YT quota. Please run the script again tomorrow.")
+            print(e)
             break
 
     # Pickle data if not all songs are iterated
