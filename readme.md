@@ -16,7 +16,7 @@ Tested on Mac OS 12.16.3 with Python 3.9.16.
 on credentials > API Key to create an API key
 1. Click on ‘Create Credentials’ > ‘OAUTH Client ID’ 
    1. Select ‘Desktop App’ and name it anything you want
-   1. Select user type 'External'
+   1. Select user type 'External' (this is probably the only option available)
    1. Fill in the app information using common sense
    1. Skip the screen for 'scopes'
    1. Add the e-mail address for the YT account to 'test users'
