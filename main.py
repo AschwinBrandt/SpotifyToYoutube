@@ -68,6 +68,10 @@ def get_previous_data():
 
 
 if __name__ == '__main__':
+    # If the current working directory is different from the file. E.g. when running in a VScode project, change the working dir to the script dir.
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    os.chdir(script_dir)
+
     # Check if config files are available and connect to API's
     check_configuration()
 
